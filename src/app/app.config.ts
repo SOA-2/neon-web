@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
         config: {
           tokenGetter: tokenGetter,
           allowedDomains: ['localhost:8050'],
-          disallowedRoutes: ['localhost:9090'],
+          disallowedRoutes: ['localhost:9090']
         },
       }),
     ),
