@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MovieService } from '../data-access/movie/movie.service';
 
 @Component({
   selector: 'lib-home',
@@ -16,4 +17,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class HomeComponent {
   value = '';
+
+  constructor(
+    private movieService: MovieService
+  ) {}
+
+  ngOnInit(): void {
+    this.getMovies();
+  }
+
+  public getMovies(): void {
+    this.movieService.getMovies().subscribe((res: any) => {
+      this.value = res;
+    })
+  }
 }
