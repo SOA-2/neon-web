@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { Router, RouterLink } from '@angular/router';
+
+import { HeaderComponent } from '@neon-web/shared';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +17,7 @@ import { AuthService } from '../data-access/auth/auth.service';
 @Component({
   selector: 'lib-log-in',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, MatDividerModule, RouterLink, ReactiveFormsModule],
+  imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, MatDividerModule, RouterLink, ReactiveFormsModule, HeaderComponent],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss',
 })
