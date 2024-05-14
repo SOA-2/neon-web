@@ -19,6 +19,7 @@
       "@neon-web/log-in": ["src/app/log-in/src/index.ts"],
       "@neon-web/logIn": ["src/app/logIn/src/index.ts"],
       "@neon-web/profile": ["src/app/profile/src/index.ts"],
+      "@neon-web/shared": ["src/app/shared/src/index.ts"],
       "@neon-web/sign-up": ["src/app/sign-up/src/index.ts"],
       "@neon-web/signUp": ["src/app/signUp/src/index.ts"]
     }

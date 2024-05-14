@@ -1,0 +1,7 @@
+.movie {
+    cursor: pointer;
+
+    &:hover {
+        scale: 0.9;
+    }
+}

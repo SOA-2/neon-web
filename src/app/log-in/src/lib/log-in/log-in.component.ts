@@ -34,10 +34,8 @@ export class LogInComponent {
     });
   }
 
-  ngOnInit(): void {}
-
   public login(): void {
-    let {username, password} = this.loginForm.getRawValue();
+    const {username, password} = this.loginForm.getRawValue();
   
     this.authService.login(username, password).subscribe((res: { access_token: string; }) => {
       localStorage.setItem('access_token', res.access_token);

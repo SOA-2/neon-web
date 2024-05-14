@@ -1,14 +1,31 @@
+<lib-header />
+
 <main class="main">
-    <div class="content">
-        <h1>Cinemas Neón</h1>
-        <mat-form-field class="example-form-field">
-            <mat-label>Buscar</mat-label>
-            <input matInput type="text" [(ngModel)]="value">
-            @if (value) {
-              <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                <mat-icon>close</mat-icon>
-              </button>
-            }
-          </mat-form-field>
-    </div>
+  <div class="content home">
+    <mat-form-field class="example-form-field">
+      <mat-label>Buscar</mat-label>
+      <input matInput type="text" [(ngModel)]="value">
+      @if (value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+
+    <mat-chip-listbox
+      class="example-chip">
+      @for (filter of filers; track filter) {
+        <mat-chip-option class="example-box">{{filter.name}}</mat-chip-option>
+      }
+    </mat-chip-listbox>
+
+    <br>
+
+    <h2>En cartelera</h2>
+    <lib-movies />
+
+    <h2>Próximamente</h2>
+    <lib-movies />
+
+  </div>
 </main>
