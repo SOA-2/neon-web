@@ -20,6 +20,7 @@
       "@neon-web/logIn": ["src/app/logIn/src/index.ts"],
       "@neon-web/profile": ["src/app/profile/src/index.ts"],
       "@neon-web/shared": ["src/app/shared/src/index.ts"],
+      "@neon-web/shopping-cart": ["src/app/shopping-cart/src/index.ts"],
       "@neon-web/sign-up": ["src/app/sign-up/src/index.ts"],
       "@neon-web/signUp": ["src/app/signUp/src/index.ts"]
     }
