@@ -2,61 +2,59 @@
 
 <main class="main">
     <div class="content movie-detail">
-        <img src="https://archivos-cms.cinecolombia.com/images/_aliases/exhibition_poster/8/5/3/8/58358-8-esl-CO/7ab0aa509396-elplanetadelossimios_posterweb.jpg"
-            alt="">
-        <div>
-            <h2>Kingdom of the planet of the Apes</h2>
-            <h3>Título en español: El Planeta de los Simios: Nuevo Reino</h3>
-            <h4>Estreno: 09-May-2024</h4>
-            <h4>Clasificación: Todos</h4>
-            <h4>Duración: 88 minutos</h4>
-            <h4>Idioma: Español</h4>
-            <h4>Director: Wes Ball</h4>
-            <h4>Genero/s: Acción, Ficción</h4>
+        <div class="movie">
+            <img src="https://archivos-cms.cinecolombia.com/images/_aliases/exhibition_poster/8/5/3/8/58358-8-esl-CO/7ab0aa509396-elplanetadelossimios_posterweb.jpg"
+                alt="">
+
+            <p>El director Wes Ball da nueva vida a la franquicia épica global ambientada varias generaciones en el
+                futuro después del reinado de César, en la que los simios son la especie dominante que vive en armonía y
+                los humanos se han visto reducidos a vivir en las sombras. Mientras un nuevo líder simio tiránico
+                construye su imperio, un joven simio emprende un viaje desgarrador que lo hará cuestionar todo lo que
+                sabía sobre el pasado y tomar decisiones que definirán el futuro tanto de los simios como de los
+                humanos.</p>
+
+            <p>Título original: Kingdom of the planet of the Apes</p>
+            <p>Idioma: Español</p>
+            <p>Director: Wes Ball</p>
+            <p>Genero/s: Acción, Ficción</p>
         </div>
 
-        <iframe width="742" height="390" src="https://www.youtube.com/embed/h19nzoazkS4"
-            title="UN GATO CON SUERTE (10 Lives) | Trailer oficial en español | Próximamente en cines" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="details">
+            <h3>El Planeta de los Simios: Nuevo Reino</h3>
+            <p>Estreno: 09-May-2024</p>
+            <p>Clasificación: Todos</p>
+            <p>Duración: 88 minutos</p>
 
-        <br>
+            <iframe width="742" height="390" src="https://www.youtube.com/embed/h19nzoazkS4"
+                title="UN GATO CON SUERTE (10 Lives) | Trailer oficial en español | Próximamente en cines" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-        <h2>Funciones Por Teatro</h2>
-
-        <mat-accordion>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Molinos
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Oviedo
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Santafe
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Viva Envigado
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>This is the primary content of the panel.</p>
-            </mat-expansion-panel>
-        </mat-accordion>
+            <div class="filter">
+                <h2>Funciones Por Teatro</h2>
+    
+                <mat-accordion multi>
+                    @for (theater of theaters; track theater.name) {
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{theater.name}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <h4>2D Doblado</h4>
+                            <mat-chip-set aria-label="Fish selection">
+                                    @for (show of theater.shows; track show.time) {
+                                    <mat-chip>{{show.time}}</mat-chip>
+                                } @empty {
+                                    Empty shows
+                                }
+                            </mat-chip-set>
+                        </mat-expansion-panel>
+                    } @empty {
+                        Empty theaters
+                    }
+                </mat-accordion>
+            </div>
+        </div>
     </div>
 </main>

@@ -1,6 +1,18 @@
 .movie-detail {
     display: grid;
-    grid-template-columns: auto auto auto;
+    gap: 30px;
+    grid-template-columns: 360px auto;
+    grid-template-rows: auto;
+    grid-template-areas: 'movie content';
+    justify-content: center;
     padding: 30px;
     max-width: 100%;
+}
+
+.movie {
+    grid-area: movie;
+}
+
+.details {
+    grid-area: content;
 }

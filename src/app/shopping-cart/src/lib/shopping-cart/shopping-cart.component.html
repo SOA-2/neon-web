@@ -29,15 +29,15 @@
                         </div>
                         <div class="seats">
                             @for (row of seats; track row) {
-                            <div class="row">
-                                @for (seat of row; track seat) {
-                                <button class="seat" [ngClass]="{'selected': seat.selected, 'occupied': seat.taken}"
-                                    (click)="seat.selected = !seat.selected" [disabled]="seat.taken">{{ seat.letter +
-                                    seat.number }}</button>
-                                } @empty {
-                                    Empty seats
-                                }
-                            </div>
+                                <div class="row">
+                                    @for (seat of row; track seat) {
+                                    <button class="seat" [ngClass]="{'selected': seat.selected, 'occupied': seat.taken}"
+                                        (click)="seat.selected = !seat.selected" [disabled]="seat.taken">{{ seat.letter +
+                                        seat.number }}</button>
+                                    } @empty {
+                                        Empty seats
+                                    }
+                                </div>
                             } @empty {
                                 Empty row
                             }
