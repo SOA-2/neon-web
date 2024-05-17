@@ -23,7 +23,7 @@ export class AuthService {
       .set('password', password)
       .set('grant_type', 'password');
 
-    return this.httpClient.post<any>(environment.login + '/realms/neon/protocol/openid-connect/token', body).pipe(
+    return this.httpClient.post<any>(environment.api + '/auth', body).pipe(
         map((res: any) => {
           if (res && res.token) {
             this.currentUser = this.jwtHelper.decodeToken(res.token);
