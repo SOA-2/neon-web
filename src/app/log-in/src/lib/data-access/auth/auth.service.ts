@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { environment } from '../../../../../../environments/environments';
+import { environment } from 'src/environments/environments';
 
 @Injectable({
   providedIn: 'root'

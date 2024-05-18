@@ -23,4 +23,17 @@ export const appRoutes: Route[] = [
     path: '',
     loadChildren: () => import('@neon-web/home').then((m) => m.homeRoutes),
   },
+  // {
+  //   path: '404',
+  //   component: Page404Component
+  // },
+  // {
+  //   path: '403',
+  //   component: Page403Component
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: '404',
+  //   pathMatch: 'full'
+  // },
 ];

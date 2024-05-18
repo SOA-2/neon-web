@@ -3,10 +3,17 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 export interface Movie {
-  name: string;
-  img: string;
-  year: string;
-  genre: string;
+  id: string
+  name: string
+  realName: string
+  clasification: string
+  image: string
+  genre: string
+  releaseDate: string
+  duration: number
+  context: string
+  trailer: string
+  director: string
 }
 
 @Component({

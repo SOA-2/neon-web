@@ -3,52 +3,58 @@
 <main class="main">
     <div class="content movie-detail">
         <div class="movie">
-            <img src="https://archivos-cms.cinecolombia.com/images/_aliases/exhibition_poster/8/5/3/8/58358-8-esl-CO/7ab0aa509396-elplanetadelossimios_posterweb.jpg"
-                alt="">
+            <img [src]="movie?.image" alt="">
 
-            <p>El director Wes Ball da nueva vida a la franquicia épica global ambientada varias generaciones en el
-                futuro después del reinado de César, en la que los simios son la especie dominante que vive en armonía y
-                los humanos se han visto reducidos a vivir en las sombras. Mientras un nuevo líder simio tiránico
-                construye su imperio, un joven simio emprende un viaje desgarrador que lo hará cuestionar todo lo que
-                sabía sobre el pasado y tomar decisiones que definirán el futuro tanto de los simios como de los
-                humanos.</p>
+            <br>
 
-            <p>Título original: Kingdom of the planet of the Apes</p>
-            <p>Idioma: Español</p>
-            <p>Director: Wes Ball</p>
-            <p>Genero/s: Acción, Ficción</p>
+            <p>{{ movie?.context }}</p>
+
+            <br>
+
+            <p><span class="bold">Título original:</span> {{ movie?.realName }}</p>
+            <p><span class="bold">Idioma:</span> Español</p>
+            <p><span class="bold">Director:</span> {{ movie?.director }}</p>
+            <p><span class="bold">Genero/s:</span> {{ movie?.genre?.name }}</p>
         </div>
 
         <div class="details">
-            <h3>El Planeta de los Simios: Nuevo Reino</h3>
-            <p>Estreno: 09-May-2024</p>
-            <p>Clasificación: Todos</p>
-            <p>Duración: 88 minutos</p>
+            <h2 class="bold">{{ movie?.name }}</h2>
+            <p><span class="bold">Estreno:</span> {{ movie?.releaseDate }}</p>
+            <p><span class="bold">Clasificación:</span> {{ movie?.clasification }}</p>
+            <p><span class="bold">Duración:</span> {{ movie?.duration }} minutos</p>
 
-            <iframe width="742" height="390" src="https://www.youtube.com/embed/h19nzoazkS4"
+            <br>
+
+            <iframe width="742" height="390" [src]="trailer"
                 title="UN GATO CON SUERTE (10 Lives) | Trailer oficial en español | Próximamente en cines" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+            <br>
+
             <div class="filter">
                 <h2>Funciones Por Teatro</h2>
+
+                <br>
     
                 <mat-accordion multi>
-                    @for (theater of theaters; track theater.name) {
+                    @for (theater of theaters|keyvalue; track theater.key) {
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    {{theater.name}}
+                                    {{ theater.key }}
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
                             <h4>2D Doblado</h4>
-                            <mat-chip-set aria-label="Fish selection">
-                                    @for (show of theater.shows; track show.time) {
-                                    <mat-chip>{{show.time}}</mat-chip>
+                            <mat-chip-listbox aria-label="Fish selection">
+                                @for (show of theater.value; track show.time) {
+                                    <a mat-icon-button aria-label="" routerLink="/cart">
+                                        <mat-chip-option>{{ show.time }}</mat-chip-option>
+                                    </a>
                                 } @empty {
                                     Empty shows
                                 }
-                            </mat-chip-set>
+                            </mat-chip-listbox>
                         </mat-expansion-panel>
                     } @empty {
                         Empty theaters

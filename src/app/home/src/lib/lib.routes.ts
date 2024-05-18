@@ -4,5 +4,5 @@ import { MovieDetailComponent } from './feature/movie-detail/movie-detail.compon
 
 export const homeRoutes: Route[] = [
     { path: '', component: HomeComponent },
-    { path: 'movies/:name', component: MovieDetailComponent }
+    { path: 'movies/:id', component: MovieDetailComponent }
 ];

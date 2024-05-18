@@ -18,6 +18,8 @@ export interface Filter {
   name: string;
 }
 
+export type Filters = Array<Filter>
+
 @Component({
     selector: 'lib-home',
     standalone: true,
@@ -27,11 +29,12 @@ export interface Filter {
 })
 export class HomeComponent implements OnInit {
   value = '';
+  movies = [];
 
-  filers: Filter[] = [
-    {name: 'Cartelera'},
-    {name: 'Próximamente'},
-    {name: 'Cineco Alternativo'}
+  filers: Filters = [
+    { name: 'Cartelera' },
+    { name: 'Próximamente' },
+    { name: 'Cineco Alternativo' }
   ];
 
   constructor(
@@ -44,7 +47,7 @@ export class HomeComponent implements OnInit {
 
   public getMovies(): void {
     this.movieService.getMovies().subscribe((res: any) => {
-      this.value = res;
+      this.movies = res;
     })
   }
 }

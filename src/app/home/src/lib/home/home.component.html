@@ -6,14 +6,13 @@
       <mat-label>Buscar</mat-label>
       <input matInput type="text" [(ngModel)]="value">
       @if (value) {
-      <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
       }
     </mat-form-field>
 
-    <mat-chip-listbox
-      class="example-chip">
+    <mat-chip-listbox class="example-chip">
       @for (filter of filers; track filter) {
         <mat-chip-option class="example-box">{{filter.name}}</mat-chip-option>
       }
@@ -22,10 +21,12 @@
     <br>
 
     <h2>En cartelera</h2>
-    <lib-movies />
+    <br>
+    <lib-movies [movies]="movies" />
 
     <h2>Próximamente</h2>
-    <lib-movies />
+    <br>
+    <lib-movies [movies]="movies" />
 
   </div>
 </main>

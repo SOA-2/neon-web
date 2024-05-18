@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
-import { environment } from '../../../../../../environments/environments';
+import { environment } from 'src/environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,9 @@ export class MovieService {
 
   public getMovies(): Observable<any> {
     return this.httpClient.get<any>(environment.api + '/movies', this.httpOptions);
+  }
+
+  public getMovie(id: string): Observable<any> {
+    return this.httpClient.get<any>(environment.api + `/movies/${id}`, this.httpOptions);
   }
 }
