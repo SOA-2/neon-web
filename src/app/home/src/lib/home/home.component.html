@@ -4,9 +4,9 @@
   <div class="content home">
     <mat-form-field class="example-form-field">
       <mat-label>Buscar</mat-label>
-      <input matInput type="text" [(ngModel)]="value">
-      @if (value) {
-        <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <input matInput type="text" [(ngModel)]="movieFilter.name">
+      @if (movieFilter.name) {
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="movieFilter.name=''">
           <mat-icon>close</mat-icon>
         </button>
       }
@@ -22,11 +22,11 @@
 
     <h2>En cartelera</h2>
     <br>
-    <lib-movies [movies]="movies" />
+    <lib-movies [filter]="movieFilter" [movies]="movies" />
 
-    <h2>Próximamente</h2>
+    <!-- <h2>Próximamente</h2>
     <br>
-    <lib-movies [movies]="movies" />
+    <lib-movies [movies]="movies" /> -->
 
   </div>
 </main>

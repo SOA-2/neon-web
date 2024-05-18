@@ -43,7 +43,7 @@ export class MovieDetailComponent {
   movie!: Movie;
   shows!: Array<any>;
   theaters!: Array<any>;
-  dates!: Array<any>
+  dates!: Array<any>;
   dateSelected: any;
 
   constructor(
@@ -53,11 +53,11 @@ export class MovieDetailComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getMovies(this.id);
+    this.getMovie(this.id);
     this.getShows(this.id);
   }
 
-  public getMovies(id: string): void {
+  public getMovie(id: string): void {
     this.movieService.getMovie(id).subscribe((res: any) => {
       this.movie = res;
       this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailer);
@@ -65,7 +65,7 @@ export class MovieDetailComponent {
   }
 
   public getShows(id: string): void {
-    this.showService.getShowsByMovie(id).subscribe((res: any) => {
+    this.showService.getShowsByMovieId(id).subscribe((res: any) => {
       this.shows = res;
       this.formatDates();
       this.formatShows();

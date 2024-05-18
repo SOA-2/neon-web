@@ -3,19 +3,18 @@
 <main class="main">
     <div class="content cart">
         <section class="movie-detail">
-            <img src="https://archivos-cms.cinecolombia.com/images/_aliases/exhibition_poster/8/5/3/8/58358-8-esl-CO/7ab0aa509396-elplanetadelossimios_posterweb.jpg"
-                alt="">
+            <img [src]="show.movie.image" alt="">
 
             <br>
 
             <div>
-                <h3>Kingdom of the planet of the Apes</h3>
-                <p>Título en español: El Planeta de los Simios: Nuevo Reino</p>
-                <p>Clasificación: Todos</p>
-                <p>Duración: 88 minutos</p>
-                <p>Función: 10:00 pm</p>
-                <p>Sala: 8</p>
-                <p>Fecha: 2024-05-15</p>
+                <h3 class="bold">{{ show.movie.realName }}</h3>
+                <p><span class="bold">Título en español:</span> {{ show.movie.name }}</p>
+                <p><span class="bold">Clasificación:</span> {{ show.movie.clasification }}</p>
+                <p><span class="bold">Duración:</span> {{ show.movie.duration }} minutos</p>
+                <p><span class="bold">Función:</span> {{ show.time }}</p>
+                <p><span class="bold">Sala:</span> 8</p>
+                <p><span class="bold">Fecha:</span> {{ show.date }}</p>
             </div>
         </section>
 
@@ -28,18 +27,17 @@
                             <span>Pantalla</span>
                         </div>
                         <div class="seats">
-                            @for (row of seats; track row) {
+                            @for (row of seats|keyvalue; track row.key) {
                                 <div class="row">
-                                    @for (seat of row; track seat) {
-                                    <button class="seat" [ngClass]="{'selected': seat.selected, 'occupied': seat.taken}"
-                                        (click)="seat.selected = !seat.selected" [disabled]="seat.taken">{{ seat.letter +
-                                        seat.number }}</button>
+                                    @for (seat of row.value; track seat.id) {
+                                        <button class="seat" [ngClass]="{'selected': seat.selected, 'occupied': seat.taken}"
+                                            (click)="selectSeat(seat)" [disabled]="seat.taken">{{ seat.letter + seat.number }}</button>
                                     } @empty {
-                                        Empty seats
+                                        Empty row
                                     }
                                 </div>
                             } @empty {
-                                Empty row
+                                Empty seats
                             }
                         </div>
                         <ul class="showcase">
@@ -68,19 +66,25 @@
                     <th>Precio</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>C1</td>
-                        <td>$ 10.000</td>
-                    </tr>
-                    <tr>
-                        <td>C2</td>
-                        <td>$ 10.000</td>
-                    </tr>
+                    @for (row of seats|keyvalue; track row.key) {
+                        @for (seat of row.value; track seat.id) {
+                            @if(seat.selected) {
+                                <tr>
+                                    <td>{{ seat.letter + seat.number }}</td>
+                                    <td>{{ show.screen.fare.price | currency }}</td>
+                                </tr>
+                            }
+                        } @empty {
+                            Empty seats
+                        }
+                    } @empty {
+                        Empty row
+                    }
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td><span>Total a pagar:</span></td>
-                        <td>$ 19.000</td>
+                        <td><span class="bold">Total a pagar:</span></td>
+                        <td>{{ total | currency }}</td>
                     </tr>
                 </tfoot>
             </table>

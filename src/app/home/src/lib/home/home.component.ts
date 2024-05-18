@@ -28,8 +28,8 @@ export type Filters = Array<Filter>
     imports: [CommonModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, RouterLink, MatChipsModule, MoviesComponent, MatIconModule, HeaderComponent]
 })
 export class HomeComponent implements OnInit {
-  value = '';
   movies = [];
+  movieFilter: any = { name: '' };
 
   filers: Filters = [
     { name: 'Cartelera' },

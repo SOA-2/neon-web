@@ -39,7 +39,7 @@
                         {{ date.value[0].month }}
                     </button>
                 } @empty {
-                    Empty theaters
+                    Empty dates
                 }
             </div>
 
@@ -59,7 +59,7 @@
                             <h4>2D Doblado</h4>
                             <mat-chip-listbox aria-label="Fish selection">
                                 @for (show of theater.value; track show.time) {
-                                    <a mat-icon-button aria-label="" routerLink="/cart">
+                                    <a mat-icon-button aria-label="" [routerLink]="['/cart/', show.id]">
                                         <mat-chip-option>{{ show.time }}</mat-chip-option>
                                     </a>
                                 } @empty {

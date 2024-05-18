@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root'
 })
-export class ShowService {
+export class SeatService {
   httpOptions: any;
 
   constructor(
@@ -20,12 +20,11 @@ export class ShowService {
     };
   }
 
-  public getShow(id: string): Observable<any> {
-    return this.httpClient.get<any>(environment.api + `/shows/${id}`, this.httpOptions);
+  public getSeatsByScreenId(id: string): Observable<any> {
+    return this.httpClient.get<any>(environment.api + `/seats/screen/${id}`, this.httpOptions);
   }
 
-  public getShowsByMovieId(id: string): Observable<any> {
-    return this.httpClient.get<any>(environment.api + `/shows/movie/${id}`, this.httpOptions);
+  public getSeatsReservedByShowId(id: string): Observable<any> {
+    return this.httpClient.get<any>(environment.api + `/reserved/${id}`, this.httpOptions);
   }
-
 }
