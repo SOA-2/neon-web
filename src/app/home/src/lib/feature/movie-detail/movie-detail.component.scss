@@ -16,3 +16,37 @@
 .details {
     grid-area: content;
 }
+
+.dates {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0px;
+}
+
+.date {
+    align-items: center;
+    background-color: #7d9bc3;
+    border: none;
+    border-radius: .5rem;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.4rem;
+    height: 4rem;
+    justify-content: center;
+    line-height: 1;
+    padding: .15rem .25rem;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    width: 4rem;
+
+    &:hover {
+        background: #0076ff;
+        color: #fff;
+    }
+    
+    &.selected {
+        background-color: #1c508d;
+    }
+}

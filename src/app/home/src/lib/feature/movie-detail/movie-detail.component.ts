@@ -41,7 +41,10 @@ export class MovieDetailComponent {
 
   trailer: any;
   movie!: Movie;
+  shows!: Array<any>;
   theaters!: Array<any>;
+  dates!: Array<any>
+  dateSelected: any;
 
   constructor(
     private movieService: MovieService,
@@ -63,12 +66,35 @@ export class MovieDetailComponent {
 
   public getShows(id: string): void {
     this.showService.getShowsByMovie(id).subscribe((res: any) => {
-      this.formatShows(res);
+      this.shows = res;
+      this.formatDates();
+      this.formatShows();
     })
   }
 
-  formatShows(res: any) {
-    this.theaters = res.reduce((r: any, show: any) => {
+  public filterTheaters(date: any): void {
+    this.dateSelected = date.key;
+    this.theaters = this.shows.reduce((r: any, show: any) => {
+      if (show.date === date.key) {
+        r[show.theatre.name] = [...r[show.theatre.name] || [], show];
+      }
+      return r;
+    }, {})
+  }
+
+  formatDates() {
+    this.dates =  this.shows.reduce((r: any, show: any) => {
+      r[show.date] = [...r[show.date] || [], {
+        ...show,
+        month: new Date(show.date).toLocaleString('default', { month: 'long' }),
+        day: new Date(show.date).toLocaleString('default', { day: '2-digit' })
+      }];
+      return r;
+    }, {})
+  }
+
+  formatShows() {
+    this.theaters = this.shows.reduce((r: any, show: any) => {
       r[show.theatre.name] = [...r[show.theatre.name] || [], show];
       return r;
     }, {})

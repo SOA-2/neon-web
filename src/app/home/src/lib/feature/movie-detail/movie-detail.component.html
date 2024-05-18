@@ -3,25 +3,25 @@
 <main class="main">
     <div class="content movie-detail">
         <div class="movie">
-            <img [src]="movie?.image" alt="">
+            <img [src]="movie.image" alt="">
 
             <br>
 
-            <p>{{ movie?.context }}</p>
+            <p>{{ movie.context }}</p>
 
             <br>
 
-            <p><span class="bold">Título original:</span> {{ movie?.realName }}</p>
+            <p><span class="bold">Título original:</span> {{ movie.realName }}</p>
             <p><span class="bold">Idioma:</span> Español</p>
-            <p><span class="bold">Director:</span> {{ movie?.director }}</p>
-            <p><span class="bold">Genero/s:</span> {{ movie?.genre?.name }}</p>
+            <p><span class="bold">Director:</span> {{ movie.director }}</p>
+            <p><span class="bold">Genero/s:</span> {{ movie.genre.name }}</p>
         </div>
 
         <div class="details">
-            <h2 class="bold">{{ movie?.name }}</h2>
-            <p><span class="bold">Estreno:</span> {{ movie?.releaseDate }}</p>
-            <p><span class="bold">Clasificación:</span> {{ movie?.clasification }}</p>
-            <p><span class="bold">Duración:</span> {{ movie?.duration }} minutos</p>
+            <h2 class="bold">{{ movie.name }}</h2>
+            <p><span class="bold">Estreno:</span> {{ movie.releaseDate }}</p>
+            <p><span class="bold">Clasificación:</span> {{ movie.clasification }}</p>
+            <p><span class="bold">Duración:</span> {{ movie.duration }} minutos</p>
 
             <br>
 
@@ -31,6 +31,17 @@
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
             <br>
+
+            <div class="dates">
+                @for (date of dates|keyvalue; track date.key) {
+                    <button class="date" [ngClass]="{'selected': dateSelected === date.key }" (click)="filterTheaters(date)">
+                        {{ date.value[0].day }}
+                        {{ date.value[0].month }}
+                    </button>
+                } @empty {
+                    Empty theaters
+                }
+            </div>
 
             <div class="filter">
                 <h2>Funciones Por Teatro</h2>
