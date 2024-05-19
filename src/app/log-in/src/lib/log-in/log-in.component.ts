@@ -17,7 +17,7 @@ import { AuthService } from '../data-access/auth/auth.service';
 @Component({
   selector: 'lib-log-in',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, MatDividerModule, RouterLink, ReactiveFormsModule, HeaderComponent],
+  imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatIconModule, MatDividerModule, RouterLink, ReactiveFormsModule, HeaderComponent],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss',
 })

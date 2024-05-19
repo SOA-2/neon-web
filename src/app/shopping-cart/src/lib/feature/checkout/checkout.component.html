@@ -1,0 +1,93 @@
+<lib-header />
+
+<main class="main">
+    <div class="content checkout">
+        <section class="summary">
+            <h1>Resumen de la compra</h1>
+
+            <img [src]="show.movie.image" alt="">
+
+            <div>
+                <h3 class="bold">{{ show.movie.name }}</h3>
+                <p><span class="bold">Fecha:</span> {{ show.date }}</p>
+                <p><span class="bold">Función:</span> {{ show.time }}</p>
+                <p><span class="bold">Sala:</span> 8</p>
+                <p><span class="bold">Teatro:</span> {{ show.theatre.name }}</p>
+                <p>
+                    <span class="bold">Lugareas:</span>
+                    @for (seat of reserve.seats; track seat.id) {
+                        {{ seat.letter + seat.number }}
+                    } @empty {
+                        Empty row
+                    }
+                </p>
+                <h3 class="bold">Total: {{ reserve.total | currency }}</h3>
+            </div>
+        </section>
+        <mat-card class="card">
+            <mat-card-content>
+                <form [formGroup]="paymentForm" (ngSubmit)="checkout()" class="form">
+                    <mat-form-field class="full-width" dense>
+                        <mat-icon matPrefix dense color="primary">payment</mat-icon>
+                        <mat-label>Número de la tarjeta</mat-label>
+                        <input #input matInput maxlength="16" placeholder="Ingresa el número de la tarjeta" formControlName="carNumber">
+                        <mat-hint align="end">{{ input.value.length || 0 }}/16</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" dense>
+                        <mat-icon color="primary" dense matPrefix>person_outline</mat-icon>
+                        <mat-label>Nombre del titular de la tarjeta</mat-label>
+                        <input matInput formControlName="name">
+                    </mat-form-field>
+
+                    <mat-form-field class="expire" dense>
+                        <mat-label>Mes</mat-label>
+                        <mat-select formControlName="month">
+                            <mat-option value="1">01</mat-option>
+                            <mat-option value="2">02</mat-option>
+                            <mat-option value="3">03</mat-option>
+                            <mat-option value="4">04</mat-option>
+                            <mat-option value="5">05</mat-option>
+                            <mat-option value="6">06</mat-option>
+                            <mat-option value="7">07</mat-option>
+                            <mat-option value="8">08</mat-option>
+                            <mat-option value="9">09</mat-option>
+                            <mat-option value="10">10</mat-option>
+                            <mat-option value="11">11</mat-option>
+                            <mat-option value="12">12</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="expire" dense>
+                        <mat-label>Año</mat-label>
+                        <mat-select formControlName="year">
+                            <mat-option value="2024">2024</mat-option>
+                            <mat-option value="2025">2025</mat-option>
+                            <mat-option value="2026">2026</mat-option>
+                            <mat-option value="2027">2027</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" dense>
+                        <mat-icon color="primary" matSuffix dense>help_outline</mat-icon>
+                        <mat-label>CVV</mat-label>
+                        <input matInput type="password" maxlength="3" formControlName="cvv">
+                        <mat-hint>Detrás de tu tarjeta</mat-hint>
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="actions">
+                    <button mat-stroked-button color="primary" (click)="back()">
+                        <mat-icon>arrow_back</mat-icon>
+                        Volver
+                    </button>
+                    <button type="submit" mat-raised-button color="primary" (click)="checkout()" [disabled]="!paymentForm.valid">
+                        <mat-icon>done</mat-icon>
+                        Pagar
+                    </button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</main>

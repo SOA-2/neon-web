@@ -15,6 +15,7 @@
                 <p><span class="bold">Función:</span> {{ show.time }}</p>
                 <p><span class="bold">Sala:</span> 8</p>
                 <p><span class="bold">Fecha:</span> {{ show.date }}</p>
+                <p><span class="bold">Teatro:</span> {{ show.theatre.name }}</p>
             </div>
         </section>
 
@@ -98,7 +99,7 @@
 
             <br>
 
-            <button mat-flat-button color="primary">Pagar</button>
+            <button mat-flat-button color="primary" (click)="preRerserve()" [disabled]="!total">Pagar</button>
         </section>
     </div>
 </main>

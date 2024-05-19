@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { HeaderComponent } from '@neon-web/shared';
+import { Router } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+
+import { HeaderComponent } from '@neon-web/shared';
+
 import { ShowService } from 'src/app/home/src/lib/data-access/show/show.service';
 import { SeatService } from '../data-access/seat/seat.service';
+import { ReservationService } from '../data-access/reservation/reservation.service';
 
 export interface Seat {
   id: string;
@@ -37,7 +40,9 @@ export class ShoppingCartComponent {
 
   constructor(
     private showService: ShowService,
-    private seatService: SeatService
+    private seatService: SeatService,
+    private reservationService: ReservationService,
+    private router: Router
   ) {
     this.total = 0;
   }
@@ -95,5 +100,25 @@ export class ShoppingCartComponent {
         }
       }
     }
+  }
+
+  public preRerserve() {
+    const seatsSelected = [];
+
+    for (const key in this.seats) {
+      for (const seat of this.seats[key]) {
+        if (seat.selected) {
+          seatsSelected.push(seat);
+        }
+      }
+    }
+
+    this.reservationService.preReserve({
+      show: this.id,
+      seats: seatsSelected,
+      total: this.total
+    });
+
+    this.router.navigate(['/cart/checkout/payment']);
   }
 }
