@@ -27,4 +27,8 @@ export class SeatService {
   public getSeatsReservedByShowId(id: string): Observable<any> {
     return this.httpClient.get<any>(environment.api + `/reserved/${id}`, this.httpOptions);
   }
+
+  public getSeatsReserved(id: string): Observable<any> {
+    return this.httpClient.get<any>(environment.api + `/reserved/seats/${id}`, this.httpOptions);
+  }
 }

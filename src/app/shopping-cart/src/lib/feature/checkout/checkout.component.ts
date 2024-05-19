@@ -18,7 +18,7 @@ import { ShowService } from 'src/app/home/src/lib/data-access/show/show.service'
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatIconModule, MatDividerModule, RouterLink, ReactiveFormsModule, MatCardModule, MatSelectModule],
+  imports: [CommonModule, HeaderComponent, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatIconModule, RouterLink, ReactiveFormsModule, MatCardModule, MatSelectModule],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
 })
@@ -74,7 +74,7 @@ export class CheckoutComponent {
     };
   
     this.reservationService.reserveShow(form).subscribe((res: any) => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/cart/checkout/success/', this.reserve.show]);
     })
   }
 }
