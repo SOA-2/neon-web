@@ -2,6 +2,11 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
+    path: 'backoffice/fare',
+    loadChildren: () =>
+      import('@neon-web/backoffice-fare').then((m) => m.backofficeFareRoutes),
+  },
+  {
     path: 'cart',
     loadChildren: () =>
       import('@neon-web/shopping-cart').then((m) => m.shoppingCartRoutes),

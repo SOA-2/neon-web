@@ -4,11 +4,11 @@ import { Router, RouterLink } from '@angular/router';
 
 import { MatButton } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatIcon } from '@angular/material/icon';
 
 import { HeaderComponent } from '@neon-web/shared';
 import { AuthService } from 'src/app/log-in/src/lib/data-access/auth/auth.service';
 import { ReservationService } from 'src/app/shopping-cart/src/lib/data-access/reservation/reservation.service';
-import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'lib-profile',

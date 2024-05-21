@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@neon-web/backoffice-fare": ["src/app/backoffice-fare/src/index.ts"],
       "@neon-web/home": ["src/app/home/src/index.ts"],
       "@neon-web/log-in": ["src/app/log-in/src/index.ts"],
       "@neon-web/logIn": ["src/app/logIn/src/index.ts"],
