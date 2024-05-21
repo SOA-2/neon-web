@@ -1,0 +1,13 @@
+.profile {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 1280px;
+}
+
+.mat-column-id {
+    width: 305px;
+    border-right: 1px solid currentColor;
+    text-align: center;
+}

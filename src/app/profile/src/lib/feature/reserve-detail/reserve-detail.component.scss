@@ -1,0 +1,28 @@
+.reserve-detail {
+    align-items: center;
+    flex-direction: column;
+    max-width: 1280px;
+    padding: 30px;
+}
+
+.card-content {
+    display: flex;
+    gap: 20px;
+}
+
+.summary {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    height: fit-content;
+    padding: 20px;
+}
+
+.seats {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

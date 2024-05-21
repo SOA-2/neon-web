@@ -34,6 +34,10 @@ export class ReservationService {
     return this.httpClient.get<any>(environment.api + `/reserve/${id}`, this.httpOptions);
   }
 
+  public getUserReserves(id: string): Observable<any> {
+    return this.httpClient.get<any>(environment.api + `/reserve/user/${id}`, this.httpOptions);
+  }
+
   public reserveShow(form: any): Observable<any> {
     return this.httpClient.post<any>(environment.api + '/reserve', form).pipe(
         map((res: any) => {

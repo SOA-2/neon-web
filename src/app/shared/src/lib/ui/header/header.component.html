@@ -15,7 +15,13 @@
             </mat-select>
         </mat-form-field>
     </div>
-    <a mat-button aria-label="Example icon-button with share icon" routerLink="/login">
-        Iniciar Sesión
-    </a>
+    @if (isAuthenticated) {
+        <a mat-button aria-label="Example icon-button with share icon" routerLink="/profile">
+            {{ currentUser.given_name + ' ' + currentUser.family_name }}
+        </a>
+    } @else {
+        <a mat-button aria-label="Example icon-button with share icon" routerLink="/login">
+            Iniciar Sesión
+        </a>
+    }
 </mat-toolbar>

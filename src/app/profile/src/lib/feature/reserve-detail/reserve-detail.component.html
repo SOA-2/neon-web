@@ -1,0 +1,42 @@
+<lib-header />
+
+<main class="main">
+    <div class="content reserve-detail">
+        <h1>Resumen de la compra</h1>
+
+        <br>
+
+        <mat-card class="card">
+            <mat-card-content class="card-content">
+                <div class="summary">
+                    <img [src]="reserve.show.movie.image" alt="">
+                    <div>
+                        <h3 class="bold">{{ reserve.show.movie.name }}</h3>
+                        <p><span class="bold">Fecha:</span> {{ reserve.show.date }}</p>
+                        <p><span class="bold">Función:</span> {{ reserve.show.time }}</p>
+                        <p><span class="bold">Sala:</span> 8</p>
+                        <p><span class="bold">Teatro:</span> {{ reserve.show.theatre.name }}</p>
+                        <h3 class="bold">Total: {{ reserve.total | currency }}</h3>
+                    </div>
+                </div>
+                <mat-divider [vertical]="true"></mat-divider>
+                <div class="seats">
+                    @for (seat of seats; track seat.id) {
+                        <div>
+                            <h3><span class="bold">Asiento:</span>  {{ seat.seat.letter + '' + seat.seat.number }}</h3>
+                            <qrcode [qrdata]="seat.id" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+                        </div>
+                    } @empty {
+                        Empty seats
+                    }
+                    <div class="actions">
+                        <a mat-stroked-button aria-label="" routerLink="/profile">
+                            <mat-icon>arrow_back</mat-icon>
+                            Volver
+                        </a>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</main>

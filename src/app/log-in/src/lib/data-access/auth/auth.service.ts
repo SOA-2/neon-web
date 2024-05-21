@@ -14,10 +14,17 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private jwtHelper: JwtHelperService
-  ) { }
+  ) {
+    this.getUser();
+  }
 
   public getToken(): string {
     return localStorage.getItem('access_token') || '';
+  }
+
+  public getUser(): void {
+    const user = localStorage.getItem('access_token') || '';
+    this.currentUser = this.jwtHelper.decodeToken(user);
   }
 
   public login(username: string, password: string) {

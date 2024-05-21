@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 
+import { AuthService } from 'src/app/log-in/src/lib/data-access/auth/auth.service';
+
 interface City {
   value: string;
   viewValue: string;
@@ -29,4 +31,16 @@ export class HeaderComponent {
     {value: '2', viewValue: 'Bogota'},
     {value: '3', viewValue: 'Cali'},
   ];
+  isAuthenticated!: boolean;
+  currentUser: any;
+
+  constructor(
+    private authService: AuthService
+  ) {}
+
+  ngOnInit() {
+    this.isAuthenticated = this.authService.isAuthenticated();
+    this.currentUser = this.authService.currentUser;
+  }
+
 }
