@@ -29,8 +29,9 @@ export class AuthService {
 
     return this.httpClient.post<any>(environment.api + '/auth', body).pipe(
         map((res: any) => {
-          if (res && res.token) {
-            this.currentUser = this.jwtHelper.decodeToken(res.token);
+          if (res && res.access_token) {
+            localStorage.setItem('access_token', res.access_token);
+            this.currentUser = this.jwtHelper.decodeToken(res.access_token);
           }
           return res;
         })

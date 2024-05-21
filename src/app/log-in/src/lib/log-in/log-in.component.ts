@@ -38,7 +38,10 @@ export class LogInComponent {
   public login(): void {
     const {username, password} = this.loginForm.getRawValue();
   
-    this.authService.login(username, password);
+    this.authService.login(username, password).subscribe((res: { access_token: string; }) => {
+      this.openSnackBar('Se ha logueado correctamente', 'Entendido');
+      this.router.navigate(['/']);
+    })
   }
 
   private openSnackBar(message: string, action: string): void {
