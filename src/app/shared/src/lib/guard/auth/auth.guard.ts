@@ -11,9 +11,9 @@ export const authGuard: CanActivateFn = (route, state) => {
 
     if (currentUser && authService.isAuthenticated()) {
       // check if route is restricted by role
-      if (route.data['roles'] && route.data['roles'].indexOf(currentUser.roles) === -1) {
+      if (route.data['roles'] && currentUser.realm_access.roles.indexOf(route.data['roles'][0]) === -1) {
         // role not authorised so redirect to not-authorized page
-        router.navigate(['/403']);
+        router.navigate(['/']);
         return false;
       }
       // authorised so return true

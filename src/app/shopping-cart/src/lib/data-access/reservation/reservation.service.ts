@@ -42,6 +42,7 @@ export class ReservationService {
     return this.httpClient.post<any>(environment.api + '/reserve', form).pipe(
         map((res: any) => {
           this.reserve = {};
+          return res;
         })
       );
   }

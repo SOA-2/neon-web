@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,7 +15,7 @@ import { FareService } from '../../data-access/fare/fare.service';
 @Component({
   selector: 'app-fare-form',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatIconModule, MatDividerModule, ReactiveFormsModule],
+  imports: [CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormsModule, MatIconModule, MatDividerModule, ReactiveFormsModule, RouterLink],
   templateUrl: './fare-form.component.html',
   styleUrl: './fare-form.component.scss',
 })
@@ -31,7 +31,7 @@ export class FareFormComponent {
     private fareService: FareService
   ) {
     this.fareForm = new FormGroup({
-      id: new FormControl('', Validators.required),
+      id: new FormControl({value: '', disabled: true}, Validators.required),
       name: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required)
     });
@@ -48,8 +48,8 @@ export class FareFormComponent {
     this.fareService.getFare(this.id).subscribe((res: any) => {
       this.fareForm.patchValue({
         id: res.id,
-        user: res.name,
-        questioning: res.price
+        name: res.name,
+        price: res.price
       });
     })
   }
@@ -58,14 +58,14 @@ export class FareFormComponent {
     const {id, name, price} = this.fareForm.getRawValue();
 
     if (this.id) {
-      this.fareService.updateFare({name, price}).subscribe((res: any) => {
+      this.fareService.updateFare({id, name, price}).subscribe((res: any) => {
         this.openSnackBar('Se ha actualizado la tarifa correctamente', 'Entendido');
-        this.router.navigate(['/']);
+        this.router.navigate(['/backoffice/fare']);
       })
     } else {
-      this.fareService.saveFare({id, name, price}).subscribe((res: any) => {
+      this.fareService.saveFare({name, price}).subscribe((res: any) => {
         this.openSnackBar('Se ha creado la tarifa correctamente', 'Entendido');
-        this.router.navigate(['/']);
+        this.router.navigate(['/backoffice/fare']);
       })
     }
   }

@@ -37,6 +37,6 @@ export class FareService {
   }
 
   public deleteFare(id: string): Observable<any> {
-    return this.httpClient.delete<any>(environment.api + '/backoffice/fares' + id, this.httpOptions);
+    return this.httpClient.delete<any>(environment.api + '/backoffice/fares/' + id, this.httpOptions);
   }
 }

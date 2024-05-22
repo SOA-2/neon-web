@@ -4,10 +4,16 @@ import { BackofficeFareComponent } from './backoffice-fare/backoffice-fare.compo
 import { FareListComponent } from './feature/fare-list/fare-list.component';
 import { FareFormComponent } from './feature/fare-form/fare-form.component';
 
+import { authGuard } from 'src/app/shared/src/lib/guard/auth/auth.guard';
+
 export const backofficeFareRoutes: Route[] = [
   { 
     path: '',
     component: BackofficeFareComponent,
+    data: {
+      roles: ['admin']
+    },
+    canActivate: [authGuard],
     children: [
       {
         path: '',

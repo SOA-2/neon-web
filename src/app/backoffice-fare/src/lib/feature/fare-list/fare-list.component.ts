@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
-import { MatButton } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,7 +12,7 @@ import { FareService } from '../../data-access/fare/fare.service';
 @Component({
   selector: 'app-fare-list',
   standalone: true,
-  imports: [CommonModule, MatButton, MatTableModule, MatIcon, RouterLink],
+  imports: [CommonModule, MatButtonModule, MatTableModule, MatIcon, RouterLink],
   templateUrl: './fare-list.component.html',
   styleUrl: './fare-list.component.scss',
 })
@@ -32,7 +32,7 @@ export class FareListComponent {
 
   private getFares() {
     this.fareService.getFares().subscribe((res: any) => {
-      console.log(res);
+      this.dataSource = res;
     })
   }
 
@@ -42,6 +42,7 @@ export class FareListComponent {
 
   public delete(id: string): void {
     this.fareService.deleteFare(id).subscribe((res: any) => {
+      this.getFares();
       this.openSnackBar('Se ha eliminado la tarifa correctamente', 'Entendido');
     })
   }

@@ -1,7 +1,14 @@
 <mat-toolbar class="menu">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-    </button>
+    @if (currentUser && currentUser?.realm_access.roles.indexOf('admin') !== -1) {
+        <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item routerLink="/backoffice/fare">
+                Gestionar tarifas
+            </a>
+        </mat-menu>
+    }
     <a routerLink="/">
         <h1>Cinemas Neón</h1>
     </a>

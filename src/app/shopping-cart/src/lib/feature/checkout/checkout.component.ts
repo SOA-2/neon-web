@@ -74,7 +74,7 @@ export class CheckoutComponent {
     };
   
     this.reservationService.reserveShow(form).subscribe((res: any) => {
-      this.router.navigate(['/cart/checkout/success/', this.reserve.show]);
+      this.router.navigate(['/cart/checkout/success/', res.id]);
     })
   }
 }
